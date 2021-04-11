@@ -1,6 +1,6 @@
 export interface AgendamentoDTO {
     id: number;
-    dataAgendamento: Date;
+    data: Date;
     aluno: number;
     professor: number;
 }

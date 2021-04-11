@@ -6,7 +6,7 @@ import { AgendamentoController } from './agendamento.controller';
 
 @Module({
     imports: [TypeOrmModule.forFeature([AgendamentoEntity])],
-    providers: [AgendamentoService],
     controllers: [AgendamentoController],
+    providers: [AgendamentoService],
 })
 export class AgendamentoModule {}

@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { UsuarioEntity } from 'src/usuarios/usuarios.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, ManyToMany, JoinTable } from 'typeorm';
 
 @Entity('tblagendamento')
 export class AgendamentoEntity {
@@ -8,6 +9,8 @@ export class AgendamentoEntity {
   @Column()
   data: Date;
 
+  //@ManyToMany(type => UsuarioEntity)
+  //@JoinTable()
   @Column()
   aluno: number;
 
