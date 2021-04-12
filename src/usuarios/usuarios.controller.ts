@@ -16,6 +16,11 @@ export class UsuariosController {
         };
     }
 
+    @Get('/obterUsuarioPorLoginESenha/:login/:senha')
+    async obterUsuarioPorLoginESenha(@Param('login') login: string, @Param('senha') senha: string) {
+        return await this.usuarioService.obterUsuarioPorLoginESenha(login, senha);
+    }
+
     @Get()
     async obterListaProfessores(): Promise<UsuariosDTO[]>{
         return await this.usuarioService.obterListaProfessores();

@@ -19,6 +19,17 @@ export class UsuariosService {
         .getMany();
     }
 
+    async obterUsuarioPorLoginESenha(login: string, senha: string): Promise<UsuarioEntity> {
+        return await this.usuarioRepository.findOne(
+            {
+                where: {
+                    login: login,
+                    senha: senha
+                },
+            }
+        );
+    }
+
     async salvar(data: UsuariosDTO) {
         const user = this.usuarioRepository.create(data);
         await this.usuarioRepository.save(data);
