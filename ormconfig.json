@@ -1,0 +1,11 @@
+{
+    "type": "mysql",
+    "host": "awsinstance.cclnfyrxuqcb.us-east-2.rds.amazonaws.com",
+    "port": "3306",
+    "username": "root",
+    "password": "rootpassword",
+    "database": "challengefullstack",
+    "synchronize": true,
+    "logging": true,
+    "entities": ["dist/**/**.entity{.ts,.js}"]
+  }
