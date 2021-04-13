@@ -7,9 +7,9 @@ import { AgendamentoDTO } from './agendamento.dto';
 export class AgendamentoController {
     constructor(private agendamentoService: AgendamentoService) {}
 
-  @Get()
-  async obterTodos() {
-    return await this.agendamentoService.obterTodos();
+  @Get(':idusuario')
+  async obterTodos(@Param('idusuario') idusuario: string) {
+    return await this.agendamentoService.obterTodos(idusuario);
   }
 
   @Post()

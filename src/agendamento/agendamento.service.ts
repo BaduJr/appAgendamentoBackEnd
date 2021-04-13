@@ -13,12 +13,12 @@ export class AgendamentoService {
         private agendamentoRepository: Repository<AgendamentoEntity>
     ) {}
     
-    async obterTodos(): Promise<AgendamentoEntity[]> {
+    async obterTodos(idusuario: string): Promise<AgendamentoEntity[]> {
        return await this.agendamentoRepository.createQueryBuilder("agendamento")
         .innerJoinAndSelect(UsuarioEntity, "aluno", "aluno.id = agendamento.aluno")
         .innerJoinAndSelect(UsuarioEntity, "professor", "professor.id = agendamento.professor")
         .select(['agendamento.id', 'agendamento.data', 'aluno.nome', 'professor.nome']) // added selection
-        //.where("user.name = :name", { name: "Timber" })
+        .where("agendamento.aluno = :idaluno", { idaluno: idusuario })
         .orderBy('agendamento.data')
         .getRawMany();
     }

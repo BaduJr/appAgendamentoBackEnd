@@ -20,14 +20,20 @@ export class UsuariosService {
     }
 
     async obterUsuarioPorLoginESenha(login: string, senha: string): Promise<UsuarioEntity> {
-        return await this.usuarioRepository.findOne(
-            {
-                where: {
-                    login: login,
-                    senha: senha
-                },
-            }
-        );
+        return await this.usuarioRepository
+        .createQueryBuilder('u')
+        .where('u.login = :login', { login: login })
+        .andWhere('u.senha = :senha', { senha: senha })
+        .select(['u.id', 'u.nome'])
+        .getOne();
+        // return await this.usuarioRepository.findOne(
+        //     {
+        //         where: {
+        //             login: login,
+        //             senha: senha
+        //         },
+        //     }
+        // );
     }
 
     async salvar(data: UsuariosDTO) {
